@@ -24,7 +24,7 @@ $ git clone https://github.com/wincentwang/WinApp.git
 ```
 2. Build Project 
 ```
-$ mvn clean install -DskipTests
+$ mvn clean install -Dmaven.test.skip=true
 ```
 3. Intial DataBase
 ```

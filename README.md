@@ -1,9 +1,9 @@
 # WinApp
 Quick Develop Project of Java 
 
-# Contact Infomation
+# Q&A
+If you have question,you can send email to me,l will reply as soon as possbile!
 * email:wangwincent@163.com
-
 
 # Tech Framework
 
@@ -18,7 +18,22 @@ Quick Develop Project of Java
 
 # Getting Start
 
+1. Clone Project 
+```
+$ git clone https://github.com/wincentwang/WinApp.git
+```
+2. Build Project 
+```
+$ mvn clean install -DskipTests
+```
+3. Intial DataBase
+```
+/sql/winapp.sql
+```
+4. Use Eclipse or IDEA 
+Import this project as maven project .
 
 
+# Page View
 
-# Continue....
+continue....

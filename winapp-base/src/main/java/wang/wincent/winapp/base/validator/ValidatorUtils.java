@@ -1,7 +1,7 @@
 package wang.wincent.winapp.base.validator;
 
 
-import wang.wincent.winapp.base.utils.WinAppException;
+import wang.wincent.winapp.common.utils.WinAppException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;

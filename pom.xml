@@ -12,7 +12,7 @@
         <module>winapp-web</module>
         <module>winapp-common</module>
         <module>winapp-base</module>
-        <module>winapp-quartz</module>
+        <module>winapp-job</module>
         <module>winapp-oss</module>
     </modules>
 

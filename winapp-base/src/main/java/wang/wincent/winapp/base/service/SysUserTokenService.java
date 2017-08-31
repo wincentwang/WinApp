@@ -1,7 +1,7 @@
 package wang.wincent.winapp.base.service;
 
 import wang.wincent.winapp.base.entity.SysUserTokenEntity;
-import wang.wincent.winapp.base.utils.Result;
+import wang.wincent.winapp.common.utils.Result;
 
 /**
  * 用户Token

@@ -26,7 +26,7 @@
 		</property>
 	</bean>
 
-	<bean id="SpringContextUtil" class="wang.wincent.winapp.base.utils.SpringContextUtils" />
+	<bean id="SpringContextUtil" class="wang.wincent.winapp.common.utils.SpringContextUtils" />
 
 	<import resource="classpath:spring/spring-jdbc.xml"/>
 	<import resource="classpath:spring/spring-shiro.xml"/>

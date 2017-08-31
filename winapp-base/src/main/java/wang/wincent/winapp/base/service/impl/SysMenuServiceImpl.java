@@ -8,7 +8,7 @@ import wang.wincent.winapp.base.entity.SysMenuEntity;
 import wang.wincent.winapp.base.mapper.SysMenuMapper;
 import wang.wincent.winapp.base.service.SysMenuService;
 import wang.wincent.winapp.base.service.SysUserService;
-import wang.wincent.winapp.base.utils.Constants;
+import wang.wincent.winapp.common.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;

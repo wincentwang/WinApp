@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import wang.wincent.winapp.base.entity.SysDeptEntity;
 import wang.wincent.winapp.base.service.SysDeptService;
-import wang.wincent.winapp.base.utils.Constants;
-import wang.wincent.winapp.base.utils.Result;
+import wang.wincent.winapp.common.utils.Constants;
+import wang.wincent.winapp.common.utils.Result;
 
 import java.util.HashMap;
 import java.util.List;

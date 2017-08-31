@@ -59,7 +59,7 @@
 
 	<filter>
 		<filter-name>xssFilter</filter-name>
-		<filter-class>wang.wincent.winapp.base.xss.XssFilter</filter-class>
+		<filter-class>wang.wincent.winapp.common.filters.XssFilter</filter-class>
 	</filter>
 
 	<filter-mapping>

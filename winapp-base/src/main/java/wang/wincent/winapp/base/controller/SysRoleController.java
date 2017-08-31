@@ -9,7 +9,7 @@ import wang.wincent.winapp.base.entity.SysRoleEntity;
 import wang.wincent.winapp.base.service.SysRoleDeptService;
 import wang.wincent.winapp.base.service.SysRoleMenuService;
 import wang.wincent.winapp.base.service.SysRoleService;
-import wang.wincent.winapp.base.utils.*;
+import wang.wincent.winapp.common.utils.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -99,9 +99,7 @@ public class SysRoleController extends AbstractController {
 	@RequiresPermissions("sys:role:save")
 	public Result save(@RequestBody SysRoleEntity role){
 		ValidatorUtils.validateEntity(role);
-		
 		sysRoleService.save(role);
-		
 		return Result.ok();
 	}
 	

@@ -11,5 +11,12 @@
 
     <artifactId>winapp-base</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>wang.wincent.winapp</groupId>
+            <artifactId>winapp-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -7,7 +7,7 @@ import wang.wincent.winapp.base.entity.SysUserTokenEntity;
 import wang.wincent.winapp.base.mapper.SysUserTokenMapper;
 import wang.wincent.winapp.base.oauth2.TokenGenerator;
 import wang.wincent.winapp.base.service.SysUserTokenService;
-import wang.wincent.winapp.base.utils.Result;
+import wang.wincent.winapp.common.utils.Result;
 
 import java.util.Date;
 

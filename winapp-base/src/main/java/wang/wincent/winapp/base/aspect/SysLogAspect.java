@@ -13,7 +13,9 @@ import wang.wincent.winapp.base.annotation.SysLog;
 import wang.wincent.winapp.base.entity.SysLogEntity;
 import wang.wincent.winapp.base.entity.SysUserEntity;
 import wang.wincent.winapp.base.service.SysLogService;
-import wang.wincent.winapp.base.utils.*;
+import wang.wincent.winapp.common.utils.HttpContextUtils;
+import wang.wincent.winapp.common.utils.IPUtils;
+import wang.wincent.winapp.common.utils.JSONUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;

@@ -1,7 +1,7 @@
 package wang.wincent.winapp.base.validator;
 
 import org.apache.commons.lang.StringUtils;
-import wang.wincent.winapp.base.utils.WinAppException;
+import wang.wincent.winapp.common.utils.WinAppException;
 
 
 public abstract class Assert {

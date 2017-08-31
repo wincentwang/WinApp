@@ -1,7 +1,7 @@
 package wang.wincent.winapp.base.oauth2;
 
 
-import wang.wincent.winapp.base.utils.WinAppException;
+import wang.wincent.winapp.common.utils.WinAppException;
 
 import java.security.MessageDigest;
 import java.util.UUID;

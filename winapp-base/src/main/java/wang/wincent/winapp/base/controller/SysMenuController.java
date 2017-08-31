@@ -12,9 +12,9 @@ import wang.wincent.winapp.base.annotation.SysLog;
 import wang.wincent.winapp.base.entity.SysMenuEntity;
 import wang.wincent.winapp.base.service.ShiroService;
 import wang.wincent.winapp.base.service.SysMenuService;
-import wang.wincent.winapp.base.utils.Constants;
-import wang.wincent.winapp.base.utils.Result;
-import wang.wincent.winapp.base.utils.WinAppException;
+import wang.wincent.winapp.common.utils.Constants;
+import wang.wincent.winapp.common.utils.Result;
+import wang.wincent.winapp.common.utils.WinAppException;
 
 import java.util.HashMap;
 import java.util.List;

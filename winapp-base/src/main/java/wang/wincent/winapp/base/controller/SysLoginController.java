@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import wang.wincent.winapp.base.annotation.SysLog;
-import wang.wincent.winapp.base.entity.SysUserEntity;
 import wang.wincent.winapp.base.service.SysUserService;
 import wang.wincent.winapp.base.service.SysUserTokenService;
-import wang.wincent.winapp.base.utils.Result;
-import wang.wincent.winapp.base.utils.ShiroUtils;
+import wang.wincent.winapp.base.shiro.ShiroUtils;
+import wang.wincent.winapp.common.utils.Result;
+
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;

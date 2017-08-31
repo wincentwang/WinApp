@@ -21,7 +21,6 @@ import wang.wincent.winapp.base.entity.SysMenuEntity;
 import wang.wincent.winapp.base.entity.SysUserEntity;
 import wang.wincent.winapp.base.service.SysMenuService;
 import wang.wincent.winapp.base.service.SysUserService;
-import wang.wincent.winapp.base.utils.ShiroUtils;
 
 /**
  * 认证

@@ -10,7 +10,7 @@ import wang.wincent.winapp.base.annotation.SysLog;
 import wang.wincent.winapp.base.entity.SysUserEntity;
 import wang.wincent.winapp.base.service.SysUserRoleService;
 import wang.wincent.winapp.base.service.SysUserService;
-import wang.wincent.winapp.base.utils.*;
+import wang.wincent.winapp.common.utils.*;
 import wang.wincent.winapp.base.validator.AddGroup;
 import wang.wincent.winapp.base.validator.Assert;
 import wang.wincent.winapp.base.validator.UpdateGroup;

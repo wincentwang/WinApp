@@ -1,7 +1,6 @@
 package wang.wincent.winapp.base.controller;
 
 
-import com.sun.org.apache.regexp.internal.RE;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,9 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import wang.wincent.winapp.base.entity.SysLogEntity;
 import wang.wincent.winapp.base.service.SysLogService;
-import wang.wincent.winapp.base.utils.PageUtils;
-import wang.wincent.winapp.base.utils.Query;
-import wang.wincent.winapp.base.utils.Result;
+import wang.wincent.winapp.common.utils.PageUtils;
+import wang.wincent.winapp.common.utils.Query;
+import wang.wincent.winapp.common.utils.Result;
+
 
 import java.util.List;
 import java.util.Map;

@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.*;
 import wang.wincent.winapp.base.annotation.SysLog;
 import wang.wincent.winapp.base.entity.SysConfigEntity;
 import wang.wincent.winapp.base.service.SysConfigService;
-import wang.wincent.winapp.base.utils.PageUtils;
-import wang.wincent.winapp.base.utils.Query;
-import wang.wincent.winapp.base.utils.Result;
-import wang.wincent.winapp.base.utils.ValidatorUtils;
+import wang.wincent.winapp.common.utils.PageUtils;
+import wang.wincent.winapp.common.utils.Query;
+import wang.wincent.winapp.common.utils.Result;
+import wang.wincent.winapp.common.utils.ValidatorUtils;
 
 import java.util.List;
 import java.util.Map;

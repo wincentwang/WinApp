@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import wang.wincent.winapp.base.entity.SysConfigEntity;
 import wang.wincent.winapp.base.mapper.SysConfigMapper;
 import wang.wincent.winapp.base.service.SysConfigService;
-import wang.wincent.winapp.base.utils.JSONUtils;
-import wang.wincent.winapp.base.utils.WinAppException;
+import wang.wincent.winapp.common.utils.JSONUtils;
+import wang.wincent.winapp.common.utils.WinAppException;
 
 import java.util.List;
 import java.util.Map;

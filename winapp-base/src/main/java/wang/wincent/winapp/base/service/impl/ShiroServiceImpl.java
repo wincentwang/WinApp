@@ -11,7 +11,7 @@ import wang.wincent.winapp.base.mapper.SysMenuMapper;
 import wang.wincent.winapp.base.mapper.SysUserMapper;
 import wang.wincent.winapp.base.mapper.SysUserTokenMapper;
 import wang.wincent.winapp.base.service.ShiroService;
-import wang.wincent.winapp.base.utils.Constants;
+import wang.wincent.winapp.common.utils.Constants;
 
 import java.util.*;
 

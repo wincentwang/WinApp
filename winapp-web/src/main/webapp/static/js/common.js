@@ -30,8 +30,8 @@ if(token == 'null'){
 
 //jquery全局配置
 $.ajaxSetup({
-	dataType: "json",
-	cache: false,
+    dataType: "json",
+    cache: false,
     headers: {
         "token": token
     },

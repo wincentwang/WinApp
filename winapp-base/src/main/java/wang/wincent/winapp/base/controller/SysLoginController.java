@@ -4,11 +4,14 @@ import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.crypto.hash.Sha256Hash;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import wang.wincent.winapp.base.annotation.SysLog;
 import wang.wincent.winapp.base.entity.SysUserEntity;
 import wang.wincent.winapp.base.service.SysUserService;
 import wang.wincent.winapp.base.service.SysUserTokenService;
@@ -22,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Map;
+
 
 /**
  * 登录相关
@@ -45,7 +49,6 @@ public class SysLoginController {
 	public void captcha(HttpServletResponse response)throws ServletException, IOException {
 		response.setHeader("Cache-Control", "no-store, no-cache");
 		response.setContentType("image/jpeg");
-
 		//生成文字验证码
 		String text = producer.createText();
 		//生成图片验证码
@@ -67,23 +70,29 @@ public class SysLoginController {
 		if(!captcha.equalsIgnoreCase(kaptcha)){
 			return Result.error("验证码不正确");
 		}
+		try{
+			Subject subject = ShiroUtils.getSubject();
+			//sha256加密
+			password = new Sha256Hash(password).toHex();
+			UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+			subject.login(token);
 
-		//用户信息
-		SysUserEntity user = sysUserService.queryByUserName(username);
-
-		//账号不存在、密码错误
-		if(user == null || !user.getPassword().equals(new Sha256Hash(password, user.getSalt()).toHex())) {
-			return Result.error("账号或密码不正确");
+		}catch (UnknownAccountException e) {
+			return Result.error(e.getMessage());
+		}catch (IncorrectCredentialsException e) {
+			return Result.error(e.getMessage());
+		}catch (LockedAccountException e) {
+			return Result.error(e.getMessage());
+		}catch (AuthenticationException e) {
+			return Result.error("账户验证失败");
 		}
-
-		//账号锁定
-		if(user.getStatus() == 0){
-			return Result.error("账号已被锁定,请联系管理员");
-		}
-
-		//生成token，并保存到数据库
-		Result r = sysUserTokenService.createToken(user.getUserId());
-		return r;
+		return Result.ok();
 	}
-	
+
+	@SysLog("用户退出")
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public String logout() {
+		ShiroUtils.logout();
+		return "redirect:login.html";
+	}
 }

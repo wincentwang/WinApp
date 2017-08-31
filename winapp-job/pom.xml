@@ -7,8 +7,9 @@
         <groupId>wang.wincent.winapp</groupId>
         <version>1.0.0</version>
     </parent>
+    <packaging>war</packaging>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>winapp-quartz</artifactId>
+    <artifactId>winapp-job</artifactId>
 
 
     <properties>
@@ -37,7 +38,6 @@
             <artifactId>winapp-base</artifactId>
             <version>1.0.0</version>
         </dependency>
-
     </dependencies>
 
 

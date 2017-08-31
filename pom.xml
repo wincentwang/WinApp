@@ -80,7 +80,6 @@
     </pluginRepositories>
 
     <dependencies>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

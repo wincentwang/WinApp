@@ -1,9 +1,8 @@
-# WinApp
+# WinApp Abstract
 Quick Develop Project of Java 
-
-# Q&A
-If you have question,you can send email to me,l will reply as soon as possbile!
-* email:wangwincent@163.com
+* Include front-end js library.such as:jqgrid,treegrid,tree,layui.
+* Include many popular framework.such as:spring,shiro and quartz,you can build project easily. 
+* Include system module.such as:dictionary,permission control,system log,sql monitor and code generator.
 
 # Tech Framework
 
@@ -26,12 +25,19 @@ $ git clone https://github.com/wincentwang/WinApp.git
 ```
 $ mvn clean install -Dmaven.test.skip=true
 ```
-3. Intial DataBase
+3. Initial DataBase
 ```
 /sql/winapp.sql
 ```
 4. Use Eclipse or IDEA 
-Import this project as maven project .
+Just import this project as maven project .
+
+
+# Q&A
+If you have any question,you can send email to me,l will reply as soon as possbile!
+* email : wangwincent@163.com
+
+
 
 
 # Page View

@@ -43,7 +43,6 @@ public class SysLogAspect {
 	private void recordLog(ProceedingJoinPoint joinPoint, long time) {
 		MethodSignature signature = (MethodSignature) joinPoint.getSignature();
 		Method method = signature.getMethod();
-
 		SysLogEntity sysLog = new SysLogEntity();
 		SysLog syslog = method.getAnnotation(SysLog.class);
 		if(syslog != null){

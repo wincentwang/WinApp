@@ -35,4 +35,5 @@ public interface SysUserService {
 	void deleteBatch(Long[] userIds);
 
 	int updatePassword(Long userId, String password, String newPassword);
+
 }

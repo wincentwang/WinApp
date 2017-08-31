@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
 
 	<!-- 继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的UserRealm.java -->  
-	<bean id="userRealm" class="net.chenlin.dp.shiro.security.UserRealm"/>
+	<bean id="userRealm" class="wang.wincent.winapp.base.shiro.UserRealm"/>
 
 	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
 		<!-- 设置session过期时间为1小时(单位：毫秒)，默认为30分钟 -->
@@ -53,7 +53,6 @@
 	
 	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 	
-	<!-- AOP式方法级权限检查  -->
 	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
 		<property name="proxyTargetClass" value="true" />
 	</bean>

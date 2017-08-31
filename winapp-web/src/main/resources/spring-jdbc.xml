@@ -2,7 +2,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans 
         http://www.springframework.org/schema/beans/spring-beans-4.2.xsd        
@@ -13,10 +12,8 @@
 		http://www.springframework.org/schema/aop
 		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-	<!-- 自动扫描包 ,将带有注解的类 纳入spring容器管理 -->
 	<context:component-scan base-package="wang.wincent.winapp"/>
 
-	<!-- 引入配置文件 -->
 	<context:property-placeholder location="classpath:db.properties" />
 
 	<!-- dataSource 配置 -->
@@ -35,7 +32,6 @@
 		<property name="testWhileIdle" value="true" />
 		<property name="testOnBorrow" value="false" />
 		<property name="testOnReturn" value="false" />
-
 		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
 		<property name="poolPreparedStatements" value="false" />
 		<property name="maxPoolPreparedStatementPerConnectionSize"  value="20" />
@@ -43,20 +39,26 @@
 		<property name="filters" value="stat" />
 	</bean>
 
-	<!-- mybatis文件配置，扫描所有mapper文件 -->
-	<bean id="sqlSessionFactory"
-		class="net.chenlin.dp.orm.mybatis.PackagesSqlSessionFactoryBean"
-		p:dataSource-ref="dataSource" p:typeAliasesPackage="net.chenlin.dp.**.entity"
-		p:configLocation="classpath:mybatis.xml" p:mapperLocations="classpath:net/chenlin/dp/**/dao/*.xml" />
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+		<property name="mapperLocations" value="classpath*:/sqlMapperXmls/*.xml"></property>
+		<property name="typeAliasesPackage" value="wang.wincent.winapp.base.entity" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
 
 	<!-- spring与mybatis整合配置，扫描所有dao -->
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
-		p:basePackage="net.chenlin.dp.**.dao" p:sqlSessionFactoryBeanName="sqlSessionFactory" />
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="wang.wincent.winapp.base.mapper" />
+	</bean>
+
 
 	<!-- 对dataSource 数据源进行事务管理 -->
 	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
-		p:dataSource-ref="dataSource" />
+		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 
 	<!-- 事务管理 通知 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">

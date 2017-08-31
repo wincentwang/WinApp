@@ -11,10 +11,11 @@ var setting = {
         }
     }
 };
+
 var ztree;
 
 var vm = new Vue({
-    el:'#rrapp',
+    el:'#winApp',
     data:{
         showList: true,
         title: null,

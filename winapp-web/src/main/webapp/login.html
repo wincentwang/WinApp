@@ -14,7 +14,7 @@
 
 </head>
 <body class="hold-transition login-page">
-<div class="login-box" id="rrapp" v-cloak>
+<div class="login-box" id="winApp" v-cloak>
   <div class="login-logo">
     <b>WinApp</b>
   </div>
@@ -63,7 +63,7 @@
 <script src="/static/js/common.js?_$.now()"></script>
 <script type="text/javascript">
 var vm = new Vue({
-	el:'#rrapp',
+	el:'#winApp',
 	data:{
 		username: '',
 		password: '',
@@ -110,6 +110,7 @@ var vm = new Vue({
 					}else{
 						vm.error = true;
 						vm.errorMsg = r.msg;
+                        vm.refreshCode();
 					}
 				}
 			});

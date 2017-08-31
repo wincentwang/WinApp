@@ -13,6 +13,7 @@
         <module>winapp-common</module>
         <module>winapp-base</module>
         <module>winapp-quartz</module>
+        <module>winapp-oss</module>
     </modules>
 
     <properties>

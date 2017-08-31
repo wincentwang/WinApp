@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>管理员列表</title>
-#parse("/header.html")
+#parse("include/header.html")
 </head>
 <body>
 <div id="rrapp" v-cloak>
@@ -83,7 +83,7 @@
 <div id="deptLayer" style="display: none;padding:10px;">
 	<ul id="deptTree" class="ztree"></ul>
 </div>
-#parse("/footer.html")
-<script src="${rc.contextPath}/static/js/modules/base/user.js"></script>
+#parse("include/footer.html")
+<script src="${ctx.contextPath}/static/js/modules/base/user.js"></script>
 </body>
 </html>

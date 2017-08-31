@@ -5,7 +5,7 @@
 #parse("include/header.html")
 </head>
 <body>
-<div id="rrapp" v-cloak>
+<div id="winApp" v-cloak>
 	<div v-show="showList">
 		<div class="grid-btn">
 			<a v-if="hasPermission('sys:menu:save')" class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
@@ -87,6 +87,6 @@
 	<ul id="menuTree" class="ztree"></ul>
 </div>
 #parse("include/footer.html")
-<script src="${rc.contextPath}/static/js/modules/sys/menu.js"></script>
+<script src="${ctx.contextPath}/static/js/modules/base/menu.js"></script>
 </body>
 </html>

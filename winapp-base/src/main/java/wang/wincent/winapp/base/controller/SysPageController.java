@@ -25,6 +25,7 @@ public class SysPageController {
 	@RequestMapping("{module}/{function}/{url}.html")
 	public String page(@PathVariable("module") String module, @PathVariable("function") String function,
 			@PathVariable("url") String url) {
+		System.out.println("/"+module + "/" + function + "/" + url + ".html");
 		return "/"+module + "/" + function + "/" + url + ".html";
 	}
 	
@@ -36,6 +37,7 @@ public class SysPageController {
 	 */
 	@RequestMapping("{module}/{url}.html")
 	public String page(@PathVariable("module") String module, @PathVariable("url") String url) {
+		System.out.println("/"+module + "/" + url + ".html");
 		return "/"+module + "/" + url + ".html";
 	}
 

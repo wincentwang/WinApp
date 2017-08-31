@@ -57,16 +57,13 @@ public class SysLogAspect {
 		Object[] args = joinPoint.getArgs();
 		String params = JSONUtils.beanToJson(args[0]);
 		sysLog.setParams(params);
-
 		//获取request
 		HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
 		//设置IP地址
 		sysLog.setIp(IPUtils.getIpAddr(request));
-
 		//用户名
 		String username = ((SysUserEntity) SecurityUtils.getSubject().getPrincipal()).getUsername();
 		sysLog.setUsername(username);
-
 		sysLog.setTime(time);
 		sysLog.setCreateDate(new Date());
 		//保存系统日志

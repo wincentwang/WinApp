@@ -5,13 +5,9 @@
   http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
   version="3.1"  metadata-complete="false">
   
-  <context-param>
+  	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			classpath:spring-mvc.xml
-			classpath:spring-jdbc.xml
-			classpath:spring-web.xml
-		</param-value>
+		<param-value>classpath:spring-web.xml</param-value>
 	</context-param>
 	
 	<context-param>
@@ -86,12 +82,12 @@
     
     <error-page>
 		<error-code>404</error-code>
-		<location>/error/404.html</location>
+		<location>/404.html</location>
 	</error-page>
 	
 	<error-page>
 		<error-code>500</error-code>
-		<location>/error/500.html</location>
+		<location>/500.html</location>
 	</error-page>
   
 </web-app>

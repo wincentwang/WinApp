@@ -2,6 +2,6 @@
 <tools>
 	<toolbox scope="application">
 		<!-- velocity 自定义标签 -->
-		<tool class="net.chenlin.dp.shiro.security.VelocityShiro" key="shiro"></tool>
+		<tool class="wang.wincent.winapp.base.shiro.VelocityShiro" key="shiro"></tool>
 	</toolbox>
 </tools>

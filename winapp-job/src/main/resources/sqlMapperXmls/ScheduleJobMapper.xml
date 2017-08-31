@@ -6,7 +6,7 @@
 		select * from schedule_job where job_id = #{value}
 	</select> 
 
-	<select id="queryList" resultType="io.renren.modules.job.entity.ScheduleJobEntity" >
+	<select id="queryList" resultType="wang.wincent.winapp.job.entity.ScheduleJobEntity" >
 		select * from schedule_job
 		<where>
 			<if test="beanName != null and beanName.trim() != ''">

@@ -27,6 +27,7 @@ import static javafx.scene.input.KeyCode.R;
 @RestController
 @RequestMapping("/sys/schedule")
 public class ScheduleJobController {
+
 	@Autowired
 	private ScheduleJobService scheduleJobService;
 	

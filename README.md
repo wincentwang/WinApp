@@ -1,8 +1,9 @@
 # WinApp Abstract
 Quick Develop Project of Java 
-* Include front-end js library.such as:jqgrid,treegrid,tree,layui.
-* Include many popular framework.such as:spring,shiro and quartz,you can build project easily. 
-* Include system module.such as:dictionary,permission control,system log,sql monitor and code generator.
+* Include front-end js library.Such as:jqgrid,treegrid,tree,layui.
+* Include many popular framework.Such as:spring,shiro and quartz ,you can build project easily. 
+* Include system module.Such as:dictionary,permission control,system log,sql monitor and code generator.
+
 
 # Tech Framework
 
@@ -34,12 +35,11 @@ Just import this project as maven project .
 
 
 # Q&A
+
 If you have any question,you can send email to me,l will reply as soon as possbile!
+
 * email : wangwincent@163.com
 
 
-
-
 # Page View
-
 continue....

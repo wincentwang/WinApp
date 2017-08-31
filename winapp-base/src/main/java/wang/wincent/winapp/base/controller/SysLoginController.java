@@ -95,4 +95,8 @@ public class SysLoginController {
 		ShiroUtils.logout();
 		return "redirect:login.html";
 	}
+
+	public static void main(String[] args) {
+		System.out.println(new Sha256Hash("admin").toHex());
+	}
 }

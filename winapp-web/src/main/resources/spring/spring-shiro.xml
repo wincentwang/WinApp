@@ -42,10 +42,10 @@
 	    <!-- authc：该过滤器下的页面必须验证后才能访问,它是Shiro内置的一个拦截器org.apache.shiro.web.filter.authc.FormAuthenticationFilter -->  
 	    <property name="filterChainDefinitions">  
 	        <value>
-	        	/statics/**=anon
+	        	/static/**=anon
 	        	/login.html=anon
 	        	/sys/login=anon
-	        	/sys/captcha.jpg=anon
+	        	/captcha.jpg=anon
 	        	/**=authc
 	        </value>
 	    </property>
@@ -56,6 +56,7 @@
 	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
 		<property name="proxyTargetClass" value="true" />
 	</bean>
+
 	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
     	<property name="securityManager" ref="securityManager"/>
 	</bean>

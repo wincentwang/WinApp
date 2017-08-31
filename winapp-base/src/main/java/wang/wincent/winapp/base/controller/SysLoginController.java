@@ -33,6 +33,7 @@ import java.util.Map;
  */
 @RestController
 public class SysLoginController {
+
 	@Autowired
 	private Producer producer;
 	@Autowired

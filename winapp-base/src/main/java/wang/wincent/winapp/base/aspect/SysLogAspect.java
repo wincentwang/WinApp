@@ -27,7 +27,7 @@ public class SysLogAspect {
 	@Autowired
 	private SysLogService sysLogService;
 	
-	@Pointcut("@annotation(wang.wincent.winapp.base.annotation.SysLogAspect)")
+	@Pointcut("@annotation(wang.wincent.winapp.base.annotation.SysLog)")
 	public void logPointCut() { 
 	}
 

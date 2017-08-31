@@ -54,17 +54,17 @@ public class WebUtils {
 	 * 将用户信息封装到map中
 	 * @return
 	 */
-	public static Query getCurrUserMap() {
-		Object userObj = SecurityUtils.getSubject().getPrincipal();
-		if(CommonUtils.isNullOrEmpty(userObj)) {
-			Query error = new Query();
-			error.put("username", "获取用户信息失败");
-			return error;
-		}
-		String username = JSONUtils.beanToJson(userObj);
-		Map<String, Object> currUser = JSONUtils.jsonToMap(username);
-		Query query = new Query(currUser);
-		return query;
-	}
+//	public static Query getCurrUserMap() {
+//		Object userObj = SecurityUtils.getSubject().getPrincipal();
+//		if(CommonUtils.isNullOrEmpty(userObj)) {
+//			Query error = new Query();
+//			error.put("username", "获取用户信息失败");
+//			return error;
+//		}
+//		String username = JSONUtils.beanToJson(userObj);
+//		Map<String, Object> currUser = JSONUtils.jsonToMap(username);
+//		Query query = new Query(currUser);
+//		return query;
+//	}
 
 }

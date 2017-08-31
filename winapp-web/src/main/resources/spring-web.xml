@@ -15,12 +15,10 @@
 	<!-- AOP Configuration -->
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 
-
 	<!-- Scan Component -->
 	<context:component-scan base-package="wang.wincent.winapp.base">
 		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController" />
 	</context:component-scan>
-
 
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
@@ -29,7 +27,9 @@
 			</list>
 		</property>
 	</bean>
+
 	<bean id="SpringContextUtil" class="wang.wincent.winapp.base.utils.SpringContextUtils" />
+
 	<import resource="classpath:spring/spring-jdbc.xml"/>
 	<import resource="classpath:spring/spring-shiro.xml"/>
 	<import resource="classpath:spring/spring-mvc.xml"/>

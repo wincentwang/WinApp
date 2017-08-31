@@ -34,7 +34,7 @@ public class SQLFilter {
         //判断是否包含非法字符
         for(String keyword : keywords){
             if(str.indexOf(keyword) != -1){
-                throw new WException("包含非法字符");
+                throw new WinAppException("包含非法字符");
             }
         }
 

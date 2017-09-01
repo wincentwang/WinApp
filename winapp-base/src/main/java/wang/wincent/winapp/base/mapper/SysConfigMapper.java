@@ -2,6 +2,7 @@ package wang.wincent.winapp.base.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import wang.wincent.winapp.base.entity.SysConfigEntity;
+import wang.wincent.winapp.common.mapper.BaseMapper;
 
 /**
  * 系统配置信息

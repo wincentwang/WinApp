@@ -1,6 +1,7 @@
 package wang.wincent.winapp.job.mapper;
 
 
+import wang.wincent.winapp.common.mapper.BaseMapper;
 import wang.wincent.winapp.job.entity.ScheduleJobLogEntity;
 
 /**

@@ -1,4 +1,4 @@
-package wang.wincent.winapp.job.mapper;
+package wang.wincent.winapp.common.mapper;
 
 import java.util.List;
 import java.util.Map;

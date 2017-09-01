@@ -2,6 +2,7 @@ package wang.wincent.winapp.base.mapper;
 
 
 import wang.wincent.winapp.base.entity.SysLogEntity;
+import wang.wincent.winapp.common.mapper.BaseMapper;
 
 /**
  * 系统日志

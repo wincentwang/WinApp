@@ -76,7 +76,6 @@ public class SysLoginController {
 			password = new Sha256Hash(password).toHex();
 			UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 			subject.login(token);
-
 		}catch (UnknownAccountException e) {
 			return Result.error(e.getMessage());
 		}catch (IncorrectCredentialsException e) {

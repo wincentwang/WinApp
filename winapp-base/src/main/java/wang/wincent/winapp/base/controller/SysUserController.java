@@ -75,7 +75,6 @@ public class SysUserController extends AbstractController {
 		password = new Sha256Hash(password, getUser().getSalt()).toHex();
 		//sha256加密
 		newPassword = new Sha256Hash(newPassword, getUser().getSalt()).toHex();
-				
 		//更新密码
 		int count = sysUserService.updatePassword(getUserId(), password, newPassword);
 		if(count == 0){
@@ -92,11 +91,9 @@ public class SysUserController extends AbstractController {
 	@RequiresPermissions("sys:user:info")
 	public Result info(@PathVariable("userId") Long userId){
 		SysUserEntity user = sysUserService.queryObject(userId);
-		
 		//获取用户所属的角色列表
 		List<Long> roleIdList = sysUserRoleService.queryRoleIdList(userId);
 		user.setRoleIdList(roleIdList);
-		
 		return Result.ok().put("user", user);
 	}
 	
@@ -108,10 +105,8 @@ public class SysUserController extends AbstractController {
 	@RequiresPermissions("sys:user:save")
 	public Result save(@RequestBody SysUserEntity user){
 		ValidatorUtils.validateEntity(user, AddGroup.class);
-		
 		user.setCreateUserId(getUserId());
 		sysUserService.save(user);
-		
 		return Result.ok();
 	}
 	
@@ -123,10 +118,8 @@ public class SysUserController extends AbstractController {
 	@RequiresPermissions("sys:user:update")
 	public Result update(@RequestBody SysUserEntity user){
 		ValidatorUtils.validateEntity(user, UpdateGroup.class);
-		
 		user.setCreateUserId(getUserId());
 		sysUserService.update(user);
-		
 		return Result.ok();
 	}
 	
@@ -140,13 +133,10 @@ public class SysUserController extends AbstractController {
 		if(ArrayUtils.contains(userIds, 1L)){
 			return Result.error("系统管理员不能删除");
 		}
-		
 		if(ArrayUtils.contains(userIds, getUserId())){
 			return Result.error("当前用户不能删除");
 		}
-		
 		sysUserService.deleteBatch(userIds);
-		
 		return Result.ok();
 	}
 }

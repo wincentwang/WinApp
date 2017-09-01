@@ -24,12 +24,6 @@
             <artifactId>winapp-job</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!--WinApp-OSS-->
-        <dependency>
-            <groupId>wang.wincent.winapp</groupId>
-            <artifactId>winapp-oss</artifactId>
-            <version>1.0.0</version>
-        </dependency>
     </dependencies>
 
     <build>

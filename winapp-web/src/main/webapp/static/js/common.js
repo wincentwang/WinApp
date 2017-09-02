@@ -84,6 +84,10 @@ window.confirm = function(msg, callback){
 	});
 }
 
+
+
+
+
 //选择一条记录
 function getSelectedRow() {
     var grid = $("#jqGrid");
@@ -109,4 +113,170 @@ function getSelectedRows() {
     	return ;
     }
     return grid.getGridParam("selarrrow");
+}
+
+
+/*daiglog*/
+dialogOpen = function(opt){
+    var defaults = {
+        id : 'layerForm',
+        title : '',
+        width: '',
+        height: '',
+        url : null,
+        scroll : false,
+        data : {},
+        btn: ['确定', '取消'],
+        success: function(){},
+        yes: function(){}
+    }
+    var option = $.extend({}, defaults, opt), content = null;
+    if(option.scroll){
+        content = [option.url]
+    }else{
+        content = [option.url, 'no']
+    }
+    top.layer.open({
+        type : 2,
+        id : option.id,
+        title : option.title,
+        closeBtn : 1,
+        anim: -1,
+        isOutAnim: false,
+        shadeClose : false,
+        shade : 0.3,
+        area : [option.width, option.height],
+        content : content,
+        btn: option.btn,
+        success: function(){
+            option.success(option.id);
+        },
+        yes: function(){
+            option.yes(option.id);
+        }
+    });
+}
+
+dialogContent = function(opt){
+    var defaults = {
+        title : '系统窗口',
+        width: '',
+        height: '',
+        content : null,
+        data : {},
+        btn: ['确定', '取消'],
+        success: null,
+        yes: null
+    }
+    var option = $.extend({}, defaults, opt);
+    return top.layer.open({
+        type : 1,
+        title : option.title,
+        closeBtn : 1,
+        anim: -1,
+        isOutAnim: false,
+        shadeClose : false,
+        shade : 0.3,
+        area : [option.width, option.height],
+        shift : 5,
+        content : option.content,
+        btn: option.btn,
+        success: option.success,
+        yes: option.yes
+    });
+}
+
+dialogAjax = function(opt){
+    var defaults = {
+        title : '系统窗口',
+        width: '',
+        height: '',
+        url : null,
+        data : {},
+        btn: ['确定', '取消'],
+        success: null,
+        yes: null
+    }
+    var option = $.extend({}, defaults, opt);
+    $.post(option.url, null, function(content){
+        layer.open({
+            type : 1,
+            title : option.title,
+            closeBtn : 1,
+            anim: -1,
+            isOutAnim: false,
+            shadeClose : false,
+            shade : 0.3,
+            area : [option.width, option.height],
+            shift : 5,
+            content : content,
+            btn: option.btn,
+            success: option.success,
+            yes: option.yes
+        });
+    });
+}
+
+dialogAlert = function (content, type) {
+    var msgType = {
+        success:1,
+        error:2,
+        warn:3,
+        info:7
+    };
+    if(isNullOrEmpty(type)){
+        type='info';
+    }
+    top.layer.alert(content, {
+        icon: msgType[type],
+        title: "系统提示",
+        anim: -1,
+        btnAlign: 'c',
+        isOutAnim: false
+    });
+}
+
+dialogConfirm = function (content, callBack) {
+    top.layer.confirm(content, {
+        area: '338px',
+        icon: 7,
+        anim: -1,
+        isOutAnim: false,
+        title: "系统提示",
+        btn: ['确认', '取消'],
+        btnAlign: 'c',
+        yes: callBack
+    });
+}
+
+dialogMsg = function(msg, type) {
+    var msgType = {
+        success:1,
+        error:2,
+        warn:3,
+        info:7
+    };
+    if(isNullOrEmpty(type)){
+        type='info';
+    }
+    top.layer.msg(msg, {
+        icon: msgType[type],
+        time: 2000
+    });
+}
+
+dialogClose = function() {
+    var index = top.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+    top.layer.close(index); //再执行关闭
+}
+
+dialogLoading = function(flag) {
+    if(flag){
+        top.layer.load(0, {
+            shade: [0.1,'#fff'],
+            time: 2000
+        });
+    }else{
+        top.layer.closeAll('loading');
+    }
 }

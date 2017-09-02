@@ -91,7 +91,6 @@ public class SysUserServiceImpl implements SysUserService {
 			user.setPassword(new Sha256Hash(user.getPassword()).toHex());
 		}
 		sysUserMapper.update(user);
-		
 		//保存用户与角色关系
 		sysUserRoleService.saveOrUpdate(user.getUserId(), user.getRoleIdList());
 	}

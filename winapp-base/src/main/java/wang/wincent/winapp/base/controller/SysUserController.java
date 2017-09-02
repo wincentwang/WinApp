@@ -20,7 +20,6 @@ import java.util.Map;
 
 /**
  * 系统用户
- *
  * @author Wincent.Wang
  * @blog   http://wincent.wang
  * @email  wangwincent@163.com
@@ -29,6 +28,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/sys/user")
 public class SysUserController extends AbstractController {
+
 	@Autowired
 	private SysUserService sysUserService;
 	@Autowired
@@ -44,14 +44,11 @@ public class SysUserController extends AbstractController {
 		if(getUserId() != Constants.SUPER_ADMIN){
 			params.put("createUserId", getUserId());
 		}
-		
 		//查询列表数据
 		Query query = new Query(params);
 		List<SysUserEntity> userList = sysUserService.queryList(query);
 		int total = sysUserService.queryTotal(query);
-		
 		PageUtils pageUtil = new PageUtils(userList, total, query.getLimit(), query.getPage());
-		
 		return Result.ok().put("page", pageUtil);
 	}
 	

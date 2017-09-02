@@ -88,7 +88,7 @@ public class SysUserServiceImpl implements SysUserService {
 		if(StringUtils.isBlank(user.getPassword())){
 			user.setPassword(null);
 		}else{
-			user.setPassword(new Sha256Hash(user.getPassword(), user.getSalt()).toHex());
+			user.setPassword(new Sha256Hash(user.getPassword()).toHex());
 		}
 		sysUserMapper.update(user);
 		

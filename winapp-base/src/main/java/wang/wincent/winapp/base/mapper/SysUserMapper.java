@@ -2,6 +2,7 @@ package wang.wincent.winapp.base.mapper;
 
 
 import wang.wincent.winapp.base.entity.SysUserEntity;
+import wang.wincent.winapp.common.mapper.BaseMapper;
 
 import java.util.List;
 import java.util.Map;

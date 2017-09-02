@@ -1,5 +1,6 @@
 package wang.wincent.winapp.job.mapper;
 
+import wang.wincent.winapp.common.mapper.BaseMapper;
 import wang.wincent.winapp.job.entity.ScheduleJobEntity;
 
 import java.util.Map;
@@ -19,4 +20,6 @@ public interface ScheduleJobMapper extends BaseMapper<ScheduleJobEntity> {
 	 * 批量更新状态
 	 */
 	int updateBatch(Map<String, Object> map);
+
+
 }

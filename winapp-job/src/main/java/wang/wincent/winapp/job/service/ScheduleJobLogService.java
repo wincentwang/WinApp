@@ -1,14 +1,14 @@
 package wang.wincent.winapp.job.service;
 
 
+
 import wang.wincent.winapp.job.entity.ScheduleJobLogEntity;
 
 import java.util.List;
 import java.util.Map;
 
+
 /**
- * 定时任务日志
- *
  * @author Wincent.Wang
  * @blog   http://wincent.wang
  * @email  wangwincent@163.com

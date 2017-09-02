@@ -1,6 +1,7 @@
 package wang.wincent.winapp.job.service.impl;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import wang.wincent.winapp.job.entity.ScheduleJobLogEntity;
@@ -10,8 +11,12 @@ import wang.wincent.winapp.job.service.ScheduleJobLogService;
 import java.util.List;
 import java.util.Map;
 
+
+
 @Service("scheduleJobLogService")
 public class ScheduleJobLogServiceImpl implements ScheduleJobLogService {
+
+
 	@Autowired
 	private ScheduleJobLogMapper scheduleJobLogMapper;
 	

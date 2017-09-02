@@ -1,6 +1,8 @@
 package wang.wincent.winapp.base.mapper;
 
 import wang.wincent.winapp.base.entity.SysDeptEntity;
+import wang.wincent.winapp.common.mapper.BaseMapper;
+
 import java.util.List;
 
 /**

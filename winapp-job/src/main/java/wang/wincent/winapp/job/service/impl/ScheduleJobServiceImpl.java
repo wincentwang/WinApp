@@ -1,5 +1,11 @@
 package wang.wincent.winapp.job.service.impl;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
 
 import org.quartz.CronTrigger;
 import org.quartz.Scheduler;
@@ -12,11 +18,6 @@ import wang.wincent.winapp.job.mapper.ScheduleJobMapper;
 import wang.wincent.winapp.job.service.ScheduleJobService;
 import wang.wincent.winapp.job.utils.ScheduleUtils;
 
-import javax.annotation.PostConstruct;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Service("scheduleJobService")
 public class ScheduleJobServiceImpl implements ScheduleJobService {
@@ -26,6 +27,7 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
 
 	@Autowired
 	private ScheduleJobMapper scheduleJobMapper;
+
 	
 	/**
 	 * 项目启动时，初始化定时器
@@ -65,7 +67,6 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
 		scheduleJob.setCreateTime(new Date());
 		scheduleJob.setStatus(Constants.ScheduleStatus.NORMAL.getValue());
 		scheduleJobMapper.save(scheduleJob);
-        
         ScheduleUtils.createScheduleJob(scheduler, scheduleJob);
     }
 	
@@ -73,7 +74,6 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
 	@Transactional
 	public void update(ScheduleJobEntity scheduleJob) {
         ScheduleUtils.updateScheduleJob(scheduler, scheduleJob);
-
 		scheduleJobMapper.update(scheduleJob);
     }
 
@@ -83,7 +83,6 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
     	for(Long jobId : jobIds){
     		ScheduleUtils.deleteScheduleJob(scheduler, jobId);
     	}
-    	
     	//删除数据
 		scheduleJobMapper.deleteBatch(jobIds);
 	}
@@ -110,7 +109,6 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
         for(Long jobId : jobIds){
     		ScheduleUtils.pauseJob(scheduler, jobId);
     	}
-        
     	updateBatch(jobIds, Constants.ScheduleStatus.PAUSE.getValue());
     }
 
@@ -120,7 +118,6 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
     	for(Long jobId : jobIds){
     		ScheduleUtils.resumeJob(scheduler, jobId);
     	}
-
     	updateBatch(jobIds, Constants.ScheduleStatus.NORMAL.getValue());
     }
     

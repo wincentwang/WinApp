@@ -14,7 +14,6 @@ import wang.wincent.winapp.job.service.ScheduleJobService;
 import java.util.List;
 import java.util.Map;
 
-import static javafx.scene.input.KeyCode.R;
 
 /**
  * 定时任务

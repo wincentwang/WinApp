@@ -15,7 +15,7 @@ var setting = {
 var ztree;
 
 var vm = new Vue({
-    el:'#winApp',
+    el:'#WinApp',
     data:{
         showList: true,
         title: null,

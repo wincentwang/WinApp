@@ -21,17 +21,20 @@ import wang.wincent.winapp.job.utils.ScheduleUtils;
 
 @Service("scheduleJobService")
 public class ScheduleJobServiceImpl implements ScheduleJobService {
+
 	@Autowired
     private Scheduler scheduler;
+
 	@Autowired
-	private ScheduleJobMapper schedulerJobMapper;
+	private ScheduleJobMapper scheduleJobMapper;
+
 	
 	/**
 	 * 项目启动时，初始化定时器
 	 */
 	@PostConstruct
 	public void init(){
-		List<ScheduleJobEntity> scheduleJobList = schedulerJobMapper.queryList(new HashMap<>());
+		List<ScheduleJobEntity> scheduleJobList = scheduleJobMapper.queryList(new HashMap<>());
 		for(ScheduleJobEntity scheduleJob : scheduleJobList){
 			CronTrigger cronTrigger = ScheduleUtils.getCronTrigger(scheduler, scheduleJob.getJobId());
             //如果不存在，则创建
@@ -45,17 +48,17 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
 	
 	@Override
 	public ScheduleJobEntity queryObject(Long jobId) {
-		return schedulerJobMapper.queryObject(jobId);
+		return scheduleJobMapper.queryObject(jobId);
 	}
 
 	@Override
 	public List<ScheduleJobEntity> queryList(Map<String, Object> map) {
-		return schedulerJobMapper.queryList(map);
+		return scheduleJobMapper.queryList(map);
 	}
 
 	@Override
 	public int queryTotal(Map<String, Object> map) {
-		return schedulerJobMapper.queryTotal(map);
+		return scheduleJobMapper.queryTotal(map);
 	}
 
 	@Override
@@ -63,7 +66,7 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
 	public void save(ScheduleJobEntity scheduleJob) {
 		scheduleJob.setCreateTime(new Date());
 		scheduleJob.setStatus(Constants.ScheduleStatus.NORMAL.getValue());
-		schedulerJobMapper.save(scheduleJob);
+		scheduleJobMapper.save(scheduleJob);
         ScheduleUtils.createScheduleJob(scheduler, scheduleJob);
     }
 	
@@ -71,7 +74,7 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
 	@Transactional
 	public void update(ScheduleJobEntity scheduleJob) {
         ScheduleUtils.updateScheduleJob(scheduler, scheduleJob);
-		schedulerJobMapper.update(scheduleJob);
+		scheduleJobMapper.update(scheduleJob);
     }
 
 	@Override
@@ -81,7 +84,7 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
     		ScheduleUtils.deleteScheduleJob(scheduler, jobId);
     	}
     	//删除数据
-		schedulerJobMapper.deleteBatch(jobIds);
+		scheduleJobMapper.deleteBatch(jobIds);
 	}
 
 	@Override
@@ -89,7 +92,7 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
     	Map<String, Object> map = new HashMap<>();
     	map.put("list", jobIds);
     	map.put("status", status);
-    	return schedulerJobMapper.updateBatch(map);
+    	return scheduleJobMapper.updateBatch(map);
     }
     
 	@Override

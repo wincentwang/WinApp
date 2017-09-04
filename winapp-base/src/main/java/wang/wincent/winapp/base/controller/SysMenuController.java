@@ -128,7 +128,6 @@ public class SysMenuController extends AbstractController {
 		if(menuId <= 31){
 			return Result.error("系统菜单，不能删除");
 		}
-
 		//判断是否有子菜单或按钮
 		List<SysMenuEntity> menuList = sysMenuService.queryListParentId(menuId);
 		if(menuList.size() > 0){

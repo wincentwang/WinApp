@@ -27,9 +27,16 @@ html { overflow-x:hidden; }
 .grid-btn{
 	margin-bottom:12px;
 }
+
 .grid-btn .btn{
 	margin-right:10px;
 }
+
+.grid-btn-group{
+    margin-bottom:12px;
+    margin-right:0px;
+}
+
 .pointer{cursor: pointer;}
 
 .ml-10 { margin-left:0 !important; }

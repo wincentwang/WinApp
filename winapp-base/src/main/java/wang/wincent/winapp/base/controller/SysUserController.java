@@ -67,7 +67,6 @@ public class SysUserController extends AbstractController {
 	@RequestMapping("/password")
 	public Result password(String password, String newPassword){
 		Assert.isBlank(newPassword, "新密码不为能空");
-
 		//sha256加密
 		password = new Sha256Hash(password, getUser().getSalt()).toHex();
 		//sha256加密
@@ -77,7 +76,6 @@ public class SysUserController extends AbstractController {
 		if(count == 0){
 			return Result.error("原密码不正确");
 		}
-		
 		return Result.ok();
 	}
 	

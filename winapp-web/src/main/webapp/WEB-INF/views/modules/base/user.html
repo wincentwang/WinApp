@@ -19,17 +19,12 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">系统用户</div>
 				<div class="panel-body">
-					<div class="row" >
-						<div class="col-md-6 form-inline pull-left">
-							<div class="form-group">
-								<input v-model="q.username" @keyup.enter="reload" class="form-control" placeholder="请输入用户名" style="width: 220px;" />
-							</div>
-							<div class="form-group">
-								<a class="btn btn-primary" @click="reload"><i class="fa fa-search"></i>&nbsp;查询</a>
-							</div>
+					<div class="grid-btn-group">
+						<div class="form-group col-sm-2">
+							<input v-model="q.username" @keyup.enter="reload" class="form-control" placeholder="请输入用户名" style="width: 220px;" />
 						</div>
-						<div class="col-md-6">
-							<div class="btn-toolbar form-inline pull-right">
+						<a class="btn btn-primary" @click="query">查询</a>
+							<div class="btn-toolbar pull-right">
 								<div class="btn-group">
 									<a class="btn btn-default" @click="reload"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
 									<a v-if="hasPermission('sys:user:save')" class="btn btn-default" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
@@ -37,12 +32,9 @@
 									<a v-if="hasPermission('sys:user:delete')" class="btn btn-default" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
 								</div>
 							</div>
-						</div>
 					</div>
-					<div class="row">
-						<table id="jqGrid"></table>
-						<div id="jqGridPager"></div>
-					</div>
+					<table id="jqGrid"></table>
+					<div id="jqGridPager"></div>
 				</div>
 			</div>
 		</div>

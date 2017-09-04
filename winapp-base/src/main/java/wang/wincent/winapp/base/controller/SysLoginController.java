@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import wang.wincent.winapp.base.annotation.SysLog;
+import wang.wincent.winapp.base.entity.SysUserEntity;
 import wang.wincent.winapp.base.service.SysUserService;
 import wang.wincent.winapp.base.service.SysUserTokenService;
 import wang.wincent.winapp.base.shiro.ShiroUtils;
@@ -73,7 +74,10 @@ public class SysLoginController {
 		try{
 			Subject subject = ShiroUtils.getSubject();
 			//sha256加密
-			password = new Sha256Hash(password).toHex();
+			SysUserEntity user = sysUserService.queryByUserName(username);
+			if(null!=user){
+				password = new Sha256Hash(password,user.getSalt()).toHex();
+			}
 			UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 			subject.login(token);
 		}catch (UnknownAccountException e) {

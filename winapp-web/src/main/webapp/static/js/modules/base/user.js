@@ -5,14 +5,8 @@ $(function () {
 });
 
 function initPageSize(){
-    $("#treePanel").css('height', $(window).height()-200);
-    // $("#jqGrid").jqGrid('setGridHeight', $(window).height() - 300);
-    $(window).resize(function() {
-        $("#treePanel").css('height', $(window).height()-54);
-        $('#jqGrid').jqGrid('setGridHeight', {
-            height : $(window).height() - 108
-		});
-    });
+    $("#treePanel").css('height', $(window).height()-100);
+    $("#userPanel").css('height', $(window).height()-100);
 }
 
 function initTreePanel(){
@@ -39,7 +33,6 @@ var setting = {
     },
     callback: {
         onClick : function(event, treeId, treeNode) {
-            console.log("tree was clicked>>"+"name："+treeNode.name+"  "+"deptId："+treeNode.deptId);
             vm.q.deptId = treeNode.deptId;
             vm.loadByDeptId(treeNode.deptId);
         }
@@ -65,7 +58,7 @@ function initUserGrid(){
             { label: '创建时间', name: 'createTime', index: "create_time", width: 90}
         ],
         viewrecords: true,
-        height: 385,
+        height: 485,
         rowNum: 10,
         rowList : [10,30,50],
         rownumbers: true,
@@ -119,7 +112,7 @@ var vm = new Vue({
 			vm.user = {deptName:null, deptId:null, status:1, roleIdList:[]};
 			//获取角色信息
 			this.getRoleList();
-			vm.getDept();
+			vm.getDeptSelect();
 		},
         getDept: function(deptId){
             //加载部门树
@@ -130,6 +123,17 @@ var vm = new Vue({
                     ztree.selectNode(node);
                     vm.user.deptName = node.name;
 				}
+            })
+        },
+        getDeptSelect: function(deptId){
+            //加载部门树
+            $.get(baseURL + "sys/dept/list", function(r){
+                ztree = $.fn.zTree.init($("#deptTreeSelect"), setting, r);
+                var node = ztree.getNodeByParam("deptId", vm.user.deptId);
+                if(node != null){
+                    ztree.selectNode(node);
+                    vm.user.deptName = node.name;
+                }
             })
         },
 		update: function () {
@@ -165,6 +169,26 @@ var vm = new Vue({
 				});
 			});
 		},
+		deptTree: function(){
+            layer.open({
+                type: 1,
+                offset: '50px',
+                skin: 'layui-layer-molv',
+                title: "选择部门",
+                area: ['300px', '450px'],
+                shade: 0,
+                shadeClose: false,
+                content: jQuery("#deptLayer"),
+                btn: ['确定', '取消'],
+                btn1: function (index) {
+                    var node = ztree.getSelectedNodes();
+                    //选择上级部门
+                    vm.user.deptId = node[0].deptId;
+                    vm.user.deptName = node[0].name;
+                    layer.close(index);
+                }
+            });
+        },
 		saveOrUpdate: function () {
 			var url = vm.user.userId == null ? "sys/user/save" : "sys/user/update";
 			$.ajax({
@@ -196,7 +220,7 @@ var vm = new Vue({
 			});
 		},
 		reload: function () {
-			// vm.showList = true;
+			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{
                 postData:{'username': vm.q.username},

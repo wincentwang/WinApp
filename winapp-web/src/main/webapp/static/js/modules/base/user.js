@@ -13,6 +13,7 @@ function initTreePanel(){
    vm.getDept();
 }
 
+var ztree;
 var setting = {
     async: {
         enable: true,
@@ -38,52 +39,74 @@ var setting = {
         }
     }
 };
-var ztree;
 
-function initUserGrid(){
+
+var ztreeSelect;
+var settingSelect = {
+    async: {
+        enable: true,
+        type: "get",
+        url: baseURL +"sys/dept/select",
+        autoParam: ["deptId"]
+    },
+    data: {
+        simpleData: {
+            enable: true,
+            idKey: "deptId",
+            pIdKey: "parentId",
+            rootPId: -1
+        },
+        key: {
+            url:"nourl"
+        }
+    }
+};
+
+function initUserGrid() {
     $("#jqGrid").jqGrid({
         url: baseURL + 'sys/user/list',
         datatype: "json",
         colModel: [
-            { label: '用户ID', name: 'userId', index: "user_id", width: 45, key: true },
-            { label: '用户名', name: 'username', width: 75 },
-            { label: '所属部门', name: 'deptName', width: 75 },
-            { label: '邮箱', name: 'email', width: 90 },
-            { label: '手机号', name: 'mobile', width: 80 },
-            { label: '状态', name: 'status', width: 80, formatter: function(value, options, row){
+            {label: '用户ID', name: 'userId', index: "user_id", width: 45, key: true},
+            {label: '用户名', name: 'username', width: 75},
+            {label: '所属部门', name: 'deptName', width: 75},
+            {label: '邮箱', name: 'email', width: 90},
+            {label: '手机号', name: 'mobile', width: 80},
+            {
+                label: '状态', name: 'status', width: 80, formatter: function (value, options, row) {
                 return value === 0 ?
                     '<span class="label label-danger">禁用</span>' :
                     '<span class="label label-success">正常</span>';
-            }},
-            { label: '创建时间', name: 'createTime', index: "create_time", width: 90}
+            }
+            },
+            {label: '创建时间', name: 'createTime', index: "create_time", width: 90}
         ],
         viewrecords: true,
         height: 485,
         rowNum: 10,
-        rowList : [10,30,50],
+        rowList: [10, 30, 50],
         rownumbers: true,
         rownumWidth: 25,
-        autowidth:true,
+        autowidth: true,
         multiselect: true,
         pager: "#jqGridPager",
-        jsonReader : {
+        jsonReader: {
             root: "page.list",
             page: "page.currPage",
             total: "page.totalPage",
             records: "page.totalCount"
         },
-        prmNames : {
-            page:"page",
-            rows:"limit",
+        prmNames: {
+            page: "page",
+            rows: "limit",
             order: "order"
         },
-        gridComplete:function(){
+        gridComplete: function () {
             //隐藏grid底部滚动条
-            $("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" });
+            $("#jqGrid").closest(".ui-jqgrid-bdiv").css({"overflow-x": "hidden"});
         }
     });
 }
-
 var vm = new Vue({
 	el:'#WinApp',
 	data:{
@@ -106,14 +129,49 @@ var vm = new Vue({
 			vm.reload();
 		},
 		add: function(){
-			vm.showList = false;
-			vm.title = "新增";
+            layer.open({
+                type: 1,
+                offset: '50px',
+                title: "增加",
+                area: ['600px', '550px'],
+                shade: 0,
+                shadeClose: false,
+                content: $("#saveUpdateLayer"),
+                btn: ['确定', '取消'],
+                btn1: function (index) {
+                    vm.saveOrUpdate();
+                    layer.close(index);
+                }
+            });
 			vm.roleList = {};
 			vm.user = {deptName:null, deptId:null, status:1, roleIdList:[]};
 			//获取角色信息
 			this.getRoleList();
 			vm.getDeptSelect();
 		},
+        update: function () {
+            var userId = getSelectedRow();
+            if(userId == null){
+                return ;
+            }
+            layer.open({
+                type: 1,
+                offset: '50px',
+                title: "修改",
+                area: ['600px', '550px'],
+                shade: 0,
+                shadeClose: false,
+                content: $("#saveUpdateLayer"),
+                btn: ['确定', '取消'],
+                btn1: function (index) {
+                    vm.saveOrUpdate();
+                    layer.close(index);
+                }
+            });
+            vm.title = "修改";
+            vm.getUser(userId);
+            this.getRoleList();
+        },
         getDept: function(deptId){
             //加载部门树
             $.get(baseURL + "sys/dept/list", function(r){
@@ -128,24 +186,14 @@ var vm = new Vue({
         getDeptSelect: function(deptId){
             //加载部门树
             $.get(baseURL + "sys/dept/list", function(r){
-                ztree = $.fn.zTree.init($("#deptTreeSelect"), setting, r);
-                var node = ztree.getNodeByParam("deptId", vm.user.deptId);
+                ztreeSelect = $.fn.zTree.init($("#deptTreeSelect"), settingSelect, r);
+                var node = ztreeSelect.getNodeByParam("deptId", vm.user.deptId);
                 if(node != null){
-                    ztree.selectNode(node);
+                    ztreeSelect.selectNode(node);
                     vm.user.deptName = node.name;
                 }
             })
         },
-		update: function () {
-			var userId = getSelectedRow();
-			if(userId == null){
-				return ;
-			}
-			vm.showList = false;
-            vm.title = "修改";
-			vm.getUser(userId);
-			this.getRoleList();
-		},
 		del: function () {
 			var userIds = getSelectedRows();
 			if(userIds == null){
@@ -181,7 +229,7 @@ var vm = new Vue({
                 content: jQuery("#deptLayer"),
                 btn: ['确定', '取消'],
                 btn1: function (index) {
-                    var node = ztree.getSelectedNodes();
+                    var node = ztreeSelect.getSelectedNodes();
                     //选择上级部门
                     vm.user.deptId = node[0].deptId;
                     vm.user.deptName = node[0].name;

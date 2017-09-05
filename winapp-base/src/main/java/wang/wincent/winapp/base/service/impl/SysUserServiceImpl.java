@@ -87,8 +87,6 @@ public class SysUserServiceImpl implements SysUserService {
 	public void update(SysUserEntity user) {
 		if(StringUtils.isBlank(user.getPassword())){
 			user.setPassword(null);
-		}else{
-			user.setPassword(new Sha256Hash(user.getPassword()).toHex());
 		}
 		sysUserMapper.update(user);
 		//保存用户与角色关系

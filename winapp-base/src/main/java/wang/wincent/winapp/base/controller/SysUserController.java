@@ -2,6 +2,7 @@ package wang.wincent.winapp.base.controller;
 
 
 import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ public class SysUserController extends AbstractController {
 
 	@Autowired
 	private SysUserService sysUserService;
+
 	@Autowired
 	private SysUserRoleService sysUserRoleService;
 	
@@ -114,6 +116,9 @@ public class SysUserController extends AbstractController {
 	public Result update(@RequestBody SysUserEntity user){
 		ValidatorUtils.validateEntity(user, UpdateGroup.class);
 		user.setCreateUserId(getUserId());
+		if(StringUtils.isNotBlank(user.getPassword())){
+            user.setPassword(new Sha256Hash(user.getPassword(),getUser().getSalt()).toHex());
+		}
 		sysUserService.update(user);
 		return Result.ok();
 	}
@@ -134,4 +139,6 @@ public class SysUserController extends AbstractController {
 		sysUserService.deleteBatch(userIds);
 		return Result.ok();
 	}
+
+
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import wang.wincent.winapp.base.entity.SysDeptEntity;
 import wang.wincent.winapp.base.service.SysDeptService;
+import wang.wincent.winapp.base.service.SysUserService;
 import wang.wincent.winapp.common.utils.Constants;
 import wang.wincent.winapp.common.utils.Result;
 
@@ -31,6 +32,9 @@ public class SysDeptController extends AbstractController {
 
 	@Autowired
 	private SysDeptService sysDeptService;
+
+	@Autowired
+	private SysUserService sysUserService;
 	
 	/**
 	 * 列表
@@ -133,9 +137,11 @@ public class SysDeptController extends AbstractController {
 		if(deptList.size() > 0){
 			return Result.error("请先删除子部门");
 		}
-
+		List<Long> userList=sysUserService.queryUserIdByDeptId(deptId);
+		if(userList.size() > 0){
+			return Result.error("该部门有成员不可以删除");
+		}
 		sysDeptService.delete(deptId);
-		
 		return Result.ok();
 	}
 	

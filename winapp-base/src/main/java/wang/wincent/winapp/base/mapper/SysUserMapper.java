@@ -37,4 +37,10 @@ public interface SysUserMapper extends BaseMapper<SysUserEntity> {
 	 * 修改密码
 	 */
 	int updatePassword(Map<String, Object> map);
+
+	/*
+	 *根据部门ID查询用户
+	 */
+    List<Long> queryUserIdByDeptId(long deptId);
+
 }

@@ -168,7 +168,6 @@ var vm = new Vue({
                     layer.close(index);
                 }
             });
-            vm.title = "修改";
             vm.getUser(userId);
             this.getRoleList();
         },
@@ -281,5 +280,4 @@ var vm = new Vue({
             }).trigger("reloadGrid");
 		}
     }
-
 });

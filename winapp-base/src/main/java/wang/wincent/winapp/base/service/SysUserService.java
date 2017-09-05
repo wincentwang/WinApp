@@ -36,4 +36,5 @@ public interface SysUserService {
 
 	int updatePassword(Long userId, String password, String newPassword);
 
+    List<Long> queryUserIdByDeptId(long deptId);
 }

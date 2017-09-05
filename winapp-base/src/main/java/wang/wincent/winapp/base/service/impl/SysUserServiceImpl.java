@@ -110,4 +110,9 @@ public class SysUserServiceImpl implements SysUserService {
 		return sysUserMapper.updatePassword(map);
 	}
 
+	@Override
+	public List<Long> queryUserIdByDeptId(long deptId) {
+		return sysUserMapper.queryUserIdByDeptId(deptId);
+	}
+
 }

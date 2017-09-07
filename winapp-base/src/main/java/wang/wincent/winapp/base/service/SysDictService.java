@@ -27,5 +27,11 @@ public interface SysDictService {
 	int batchRemove(Long[] id);
 
 	boolean hasChildren(Long[] id);
+
+
+
+
+
+
 	
 }

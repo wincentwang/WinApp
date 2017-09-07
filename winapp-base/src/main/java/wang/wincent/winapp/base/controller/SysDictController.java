@@ -53,7 +53,8 @@ public class SysDictController extends AbstractController {
 	@SysLog("新增字典")
 	@RequestMapping("/save")
 	public Result save(@RequestBody SysDictEntity macro) {
-		return sysDictService.saveDict(macro);
+		sysDictService.saveDict(macro);
+		return Result.ok();
 	}
 	
 	/**
@@ -63,7 +64,8 @@ public class SysDictController extends AbstractController {
 	 */
 	@RequestMapping("/info")
 	public Result info(@RequestBody Long id) {
-		return sysDictService.getObjectById(id);
+		sysDictService.getObjectById(id);
+		return Result.ok();
 	}
 	
 	/**
@@ -74,7 +76,8 @@ public class SysDictController extends AbstractController {
 	@SysLog("修改字典")
 	@RequestMapping("/update")
 	public Result update(@RequestBody SysDictEntity macro) {
-		return sysDictService.updateDict(macro);
+		 sysDictService.updateDict(macro);
+		return Result.ok();
 	}
 	
 	/**
@@ -85,7 +88,8 @@ public class SysDictController extends AbstractController {
 	@SysLog("删除字典")
 	@RequestMapping("/remove")
 	public Result batchRemove(@RequestBody Long[] id) {
-		return sysDictService.batchRemove(id);
+		sysDictService.batchRemove(id);
+		return Result.ok();
 	}
 	
 }

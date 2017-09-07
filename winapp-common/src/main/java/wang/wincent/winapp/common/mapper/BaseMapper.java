@@ -35,4 +35,9 @@ public interface BaseMapper<T> {
 
     int queryTotal();
 
+    List<T> list();
+
+    int batchRemove(Object[] id);
+
+    T getObjectById(Object id);
 }

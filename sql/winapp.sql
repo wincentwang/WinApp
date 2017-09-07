@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : 127.0.0.1
-Source Server Version : 50717
-Source Host           : localhost:3306
+Source Server Version : 50625
+Source Host           : 127.0.0.1:3306
 Source Database       : winapp
 
 Target Server Type    : MYSQL
-Target Server Version : 50717
+Target Server Version : 50625
 File Encoding         : 65001
 
-Date: 2017-08-30 23:52:46
+Date: 2017-09-07 17:32:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,6 +65,7 @@ CREATE TABLE `qrtz_cron_triggers` (
 -- ----------------------------
 -- Records of qrtz_cron_triggers
 -- ----------------------------
+INSERT INTO `qrtz_cron_triggers` VALUES ('quartzScheduler', 'TASK_2', 'DEFAULT', '0 0/30 * * * ?', 'Asia/Shanghai');
 
 -- ----------------------------
 -- Table structure for qrtz_fired_triggers
@@ -120,6 +121,7 @@ CREATE TABLE `qrtz_job_details` (
 -- ----------------------------
 -- Records of qrtz_job_details
 -- ----------------------------
+INSERT INTO `qrtz_job_details` VALUES ('quartzScheduler', 'TASK_2', 'DEFAULT', null, 'wang.wincent.winapp.job.utils.ScheduleJob', '0', '0', '0', '0', 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000D4A4F425F504152414D5F4B45597400997B226265616E4E616D65223A22746573745461736B222C2263726561746554696D65223A313438303734383135363030302C2263726F6E45787072657373696F6E223A223020302F3330202A202A202A203F222C226A6F624964223A322C226D6574686F644E616D65223A227465737432222C2272656D61726B223A22E697A0E58F82E695B0E6B58BE8AF95222C22737461747573223A317D7800);
 
 -- ----------------------------
 -- Table structure for qrtz_locks
@@ -134,6 +136,8 @@ CREATE TABLE `qrtz_locks` (
 -- ----------------------------
 -- Records of qrtz_locks
 -- ----------------------------
+INSERT INTO `qrtz_locks` VALUES ('quartzScheduler', 'STATE_ACCESS');
+INSERT INTO `qrtz_locks` VALUES ('quartzScheduler', 'TRIGGER_ACCESS');
 
 -- ----------------------------
 -- Table structure for qrtz_paused_trigger_grps
@@ -164,6 +168,7 @@ CREATE TABLE `qrtz_scheduler_state` (
 -- ----------------------------
 -- Records of qrtz_scheduler_state
 -- ----------------------------
+INSERT INTO `qrtz_scheduler_state` VALUES ('quartzScheduler', 'user-PC1504591835395', '1504592138316', '15000');
 
 -- ----------------------------
 -- Table structure for qrtz_simple_triggers
@@ -251,6 +256,7 @@ CREATE TABLE `qrtz_triggers` (
 -- ----------------------------
 -- Records of qrtz_triggers
 -- ----------------------------
+INSERT INTO `qrtz_triggers` VALUES ('quartzScheduler', 'TASK_2', 'DEFAULT', 'TASK_2', 'DEFAULT', null, '1504249200000', '-1', '5', 'PAUSED', 'CRON', '1504248814000', '0', null, '2', 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000D4A4F425F504152414D5F4B45597400997B226265616E4E616D65223A22746573745461736B222C2263726561746554696D65223A313438303734383135363030302C2263726F6E45787072657373696F6E223A223020302F3330202A202A202A203F222C226A6F624964223A322C226D6574686F644E616D65223A227465737432222C2272656D61726B223A22E697A0E58F82E695B0E6B58BE8AF95222C22737461747573223A317D7800);
 
 -- ----------------------------
 -- Table structure for schedule_job
@@ -271,7 +277,6 @@ CREATE TABLE `schedule_job` (
 -- ----------------------------
 -- Records of schedule_job
 -- ----------------------------
-INSERT INTO `schedule_job` VALUES ('1', 'testTask', 'test', 'renren', '0 0/30 * * * ?', '0', '有参数测试', '2016-12-01 23:16:46');
 INSERT INTO `schedule_job` VALUES ('2', 'testTask', 'test2', null, '0 0/30 * * * ?', '1', '无参数测试', '2016-12-03 14:55:56');
 
 -- ----------------------------
@@ -326,16 +331,45 @@ CREATE TABLE `sys_dept` (
   `order_num` int(11) DEFAULT NULL COMMENT '排序',
   `del_flag` tinyint(4) DEFAULT '0' COMMENT '是否删除  -1：已删除  0：正常',
   PRIMARY KEY (`dept_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='部门管理';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='部门管理';
 
 -- ----------------------------
 -- Records of sys_dept
 -- ----------------------------
-INSERT INTO `sys_dept` VALUES ('1', '0', '人人开源集团', '0', '0');
-INSERT INTO `sys_dept` VALUES ('2', '1', '长沙分公司', '1', '0');
+INSERT INTO `sys_dept` VALUES ('1', '0', 'WinCompany', '0', '0');
+INSERT INTO `sys_dept` VALUES ('2', '1', '长沙分公司', '1', '-1');
 INSERT INTO `sys_dept` VALUES ('3', '1', '上海分公司', '2', '0');
 INSERT INTO `sys_dept` VALUES ('4', '3', '技术部', '0', '0');
 INSERT INTO `sys_dept` VALUES ('5', '3', '销售部', '1', '0');
+INSERT INTO `sys_dept` VALUES ('6', '1', '西安分公司', '0', '0');
+
+-- ----------------------------
+-- Table structure for sys_dict
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_dict`;
+CREATE TABLE `sys_dict` (
+  `dict_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `parent_id` bigint(255) DEFAULT NULL COMMENT '父级id',
+  `name` varchar(50) DEFAULT NULL COMMENT '名称',
+  `value` varchar(2000) DEFAULT NULL COMMENT '值',
+  `status` tinyint(4) DEFAULT '1' COMMENT '状态，0：隐藏   1：显示',
+  `type` tinyint(20) DEFAULT NULL COMMENT '类型,0:目录，1:参数配置',
+  `order_num` int(11) DEFAULT NULL COMMENT '排序',
+  `remark` varchar(500) DEFAULT NULL COMMENT '备注',
+  `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
+  `gmt_modified` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`dict_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='通用字典表';
+
+-- ----------------------------
+-- Records of sys_dict
+-- ----------------------------
+INSERT INTO `sys_dict` VALUES ('1', '0', '系统参数', null, '1', '0', '0', null, '2017-08-15 14:51:27', null);
+INSERT INTO `sys_dict` VALUES ('2', '1', '用户状态', 'userStatus', '1', '0', '0', null, '2017-08-15 14:51:30', null);
+INSERT INTO `sys_dict` VALUES ('3', '2', '正常', '1', '0', '1', '0', '用户可登录', '2017-08-15 14:52:48', '2017-08-15 20:23:29');
+INSERT INTO `sys_dict` VALUES ('4', '2', '禁用', '0', '1', '1', '0', '禁止用户登录', '2017-08-15 14:52:51', '2017-08-15 20:44:42');
+INSERT INTO `sys_dict` VALUES ('5', '0', '客户关系', ' clientManage', '1', '0', '1', null, '2017-08-15 19:58:24', null);
+INSERT INTO `sys_dict` VALUES ('6', '5', '产品信息', 'clientProduct', '1', '0', '0', null, '2017-08-15 19:59:06', null);
 
 -- ----------------------------
 -- Table structure for sys_log
@@ -351,11 +385,24 @@ CREATE TABLE `sys_log` (
   `ip` varchar(64) DEFAULT NULL COMMENT 'IP地址',
   `create_date` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统日志';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='系统日志';
 
 -- ----------------------------
 -- Records of sys_log
 -- ----------------------------
+INSERT INTO `sys_log` VALUES ('1', 'admin', '保存角色', 'wang.wincent.winapp.base.controller.SysRoleController.save()', '{\"createTime\":1504164350275,\"deptId\":2,\"deptIdList\":[],\"deptName\":\"长沙分公司\",\"menuIdList\":[1,2,15,16,17,18],\"remark\":\"test\",\"roleId\":1,\"roleName\":\"test\"}', '318', '0:0:0:0:0:0:0:1', '2017-08-31 15:26:03');
+INSERT INTO `sys_log` VALUES ('2', 'admin', '修改菜单', 'wang.wincent.winapp.base.controller.SysMenuController.update()', '{\"icon\":\"fa fa-user\",\"menuId\":2,\"name\":\"员工管理\",\"orderNum\":1,\"parentId\":1,\"parentName\":\"系统管理\",\"type\":1,\"url\":\"modules/base/user.html\"}', '32', '0:0:0:0:0:0:0:1', '2017-08-31 16:56:15');
+INSERT INTO `sys_log` VALUES ('3', 'admin', '删除菜单', 'wang.wincent.winapp.base.controller.SysMenuController.delete()', '30', '0', '0:0:0:0:0:0:0:1', '2017-09-01 14:54:39');
+INSERT INTO `sys_log` VALUES ('4', 'admin', '修改用户', 'wang.wincent.winapp.base.controller.SysUserController.update()', '{\"createTime\":1478833871000,\"createUserId\":1,\"deptId\":2,\"deptName\":\"长沙分公司\",\"email\":\"wangwincent@163.com\",\"mobile\":\"13812345678\",\"password\":\"9ec9750e709431dad22365cabc5c625482e574c74adaebba7dd02f1129e4ce1d\",\"roleIdList\":[1],\"salt\":\"YzcmCZNvbXocrsz9dm8e\",\"status\":1,\"userId\":1,\"username\":\"admin\"}', '73', '0:0:0:0:0:0:0:1', '2017-09-01 14:58:49');
+INSERT INTO `sys_log` VALUES ('5', 'admin', '保存用户', 'wang.wincent.winapp.base.controller.SysUserController.save()', '{\"createTime\":1504515956305,\"createUserId\":1,\"deptId\":3,\"deptName\":\"上海分公司\",\"email\":\"test@yto.net.cn\",\"mobile\":\"13112345678\",\"password\":\"a3122a95c3672f95355d75e24d960eee545dc9a5d49dbb45b2779578b57e36f7\",\"roleIdList\":[1],\"salt\":\"u5jXtWe3D3PB7dFfoC1R\",\"status\":1,\"userId\":2,\"username\":\"test\"}', '117', '0:0:0:0:0:0:0:1', '2017-09-04 17:05:56');
+INSERT INTO `sys_log` VALUES ('6', 'admin', '保存用户', 'wang.wincent.winapp.base.controller.SysUserController.save()', '{\"createTime\":1504578833127,\"createUserId\":1,\"deptId\":5,\"deptName\":\"销售部\",\"email\":\"xiaoshou@yto.net.cn\",\"mobile\":\"13112345678\",\"password\":\"4c52c807fe62085f896a56eda67bb8443e2bb46962b38868f5d063f10e3e4818\",\"roleIdList\":[1],\"salt\":\"M9ISPPnbbt4pOlGomz7d\",\"status\":1,\"userId\":3,\"username\":\"xiaoshou\"}', '88', '0:0:0:0:0:0:0:1', '2017-09-05 10:33:53');
+INSERT INTO `sys_log` VALUES ('7', 'admin', '保存用户', 'wang.wincent.winapp.base.controller.SysUserController.save()', '{\"createTime\":1504578892396,\"createUserId\":1,\"deptId\":4,\"deptName\":\"技术部\",\"email\":\"zhangsan@yto.net.cn\",\"mobile\":\"13122556677\",\"password\":\"bd5b2ca0c7aeaba5cf5f84599b638cfc5fd34ba7a856fd38e55562f8526c57eb\",\"roleIdList\":[1],\"salt\":\"d4ME46CbGjyH2sG5BcQq\",\"status\":1,\"userId\":4,\"username\":\"zhangsana\"}', '30', '0:0:0:0:0:0:0:1', '2017-09-05 10:34:52');
+INSERT INTO `sys_log` VALUES ('8', 'admin', '保存用户', 'wang.wincent.winapp.base.controller.SysUserController.save()', '{\"createTime\":1504579238410,\"createUserId\":1,\"deptId\":3,\"deptName\":\"上海分公司\",\"email\":\"hello@yto.net.cn\",\"mobile\":\"13312345678\",\"password\":\"9daa43fd6faa7b01f77bd3d189ed09f5595118241aa0a98b8096a17de4fb73db\",\"roleIdList\":[1],\"salt\":\"VUhB2IpCAklZTPxJah6I\",\"status\":1,\"userId\":5,\"username\":\"hello\"}', '26', '0:0:0:0:0:0:0:1', '2017-09-05 10:40:38');
+INSERT INTO `sys_log` VALUES ('9', 'admin', '修改用户', 'wang.wincent.winapp.base.controller.SysUserController.update()', '{\"createTime\":1504579238000,\"createUserId\":1,\"deptId\":3,\"deptName\":\"上海分公司\",\"email\":\"hello@yto.net.cn\",\"mobile\":\"13312345678\",\"password\":\"27cc6994fc1c01ce6659c6bddca9b69c4c6a9418065e612c69d110b3f7b11f8a\",\"roleIdList\":[1],\"salt\":\"VUhB2IpCAklZTPxJah6I\",\"status\":1,\"userId\":5,\"username\":\"hello123\"}', '41', '0:0:0:0:0:0:0:1', '2017-09-05 10:42:35');
+INSERT INTO `sys_log` VALUES ('10', 'admin', '修改用户', 'wang.wincent.winapp.base.controller.SysUserController.update()', '{\"createTime\":1504578892000,\"createUserId\":1,\"deptId\":4,\"deptName\":\"技术部\",\"email\":\"zhangsan@yto.net.cn\",\"mobile\":\"13122556677\",\"password\":\"8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918\",\"roleIdList\":[1],\"salt\":\"d4ME46CbGjyH2sG5BcQq\",\"status\":1,\"userId\":4,\"username\":\"zhangsana\"}', '268', '0:0:0:0:0:0:0:1', '2017-09-05 13:48:48');
+INSERT INTO `sys_log` VALUES ('11', 'admin', '修改用户', 'wang.wincent.winapp.base.controller.SysUserController.update()', '{\"createTime\":1504516151000,\"createUserId\":1,\"deptId\":3,\"deptName\":\"上海分公司\",\"email\":\"wangwincent@163.com\",\"mobile\":\"13812345678\",\"password\":\"8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918\",\"roleIdList\":[1],\"salt\":\"YzcmCZNvbXocrsz9dm8e\",\"status\":1,\"userId\":1,\"username\":\"admin\"}', '49', '0:0:0:0:0:0:0:1', '2017-09-05 13:49:17');
+INSERT INTO `sys_log` VALUES ('12', 'admin', '保存角色', 'wang.wincent.winapp.base.controller.SysRoleController.save()', '{\"createTime\":1504591681716,\"deptId\":1,\"deptIdList\":[1,6,3,4,5],\"deptName\":\"WinCompany\",\"menuIdList\":[1,2,15,16,17,18,31,32,33,34,35,3,19,20,21,22,4,23,24,25,26,5,6,7,8,9,10,11,12,13,14,30,29],\"remark\":\"超级管理员\",\"roleId\":2,\"roleName\":\"超级管理员\"}', '245', '0:0:0:0:0:0:0:1', '2017-09-05 14:08:02');
+INSERT INTO `sys_log` VALUES ('13', 'admin', '修改用户', 'wang.wincent.winapp.base.controller.SysUserController.update()', '{\"createTime\":1504516151000,\"createUserId\":1,\"deptId\":3,\"deptName\":\"上海分公司\",\"email\":\"wangwincent@163.com\",\"mobile\":\"13812345678\",\"roleIdList\":[1,2],\"salt\":\"YzcmCZNvbXocrsz9dm8e\",\"status\":1,\"userId\":1,\"username\":\"admin\"}', '51', '0:0:0:0:0:0:0:1', '2017-09-05 14:08:14');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -377,9 +424,9 @@ CREATE TABLE `sys_menu` (
 -- Records of sys_menu
 -- ----------------------------
 INSERT INTO `sys_menu` VALUES ('1', '0', '系统管理', null, null, '0', 'fa fa-cog', '0');
-INSERT INTO `sys_menu` VALUES ('2', '1', '管理员管理', 'modules/sys/user.html', null, '1', 'fa fa-user', '1');
-INSERT INTO `sys_menu` VALUES ('3', '1', '角色管理', 'modules/sys/role.html', null, '1', 'fa fa-user-secret', '2');
-INSERT INTO `sys_menu` VALUES ('4', '1', '菜单管理', 'modules/sys/menu.html', null, '1', 'fa fa-th-list', '3');
+INSERT INTO `sys_menu` VALUES ('2', '1', '员工管理', 'modules/base/user.html', null, '1', 'fa fa-user', '1');
+INSERT INTO `sys_menu` VALUES ('3', '1', '角色管理', 'modules/base/role.html', null, '1', 'fa fa-user-secret', '2');
+INSERT INTO `sys_menu` VALUES ('4', '1', '菜单管理', 'modules/base/menu.html', null, '1', 'fa fa-th-list', '3');
 INSERT INTO `sys_menu` VALUES ('5', '1', 'SQL监控', 'druid/sql.html', null, '1', 'fa fa-bug', '4');
 INSERT INTO `sys_menu` VALUES ('6', '1', '定时任务', 'modules/job/schedule.html', null, '1', 'fa fa-tasks', '5');
 INSERT INTO `sys_menu` VALUES ('7', '6', '查看', null, 'sys:schedule:list,sys:schedule:info', '2', null, '0');
@@ -402,10 +449,9 @@ INSERT INTO `sys_menu` VALUES ('23', '4', '查看', null, 'sys:menu:list,sys:men
 INSERT INTO `sys_menu` VALUES ('24', '4', '新增', null, 'sys:menu:save,sys:menu:select', '2', null, '0');
 INSERT INTO `sys_menu` VALUES ('25', '4', '修改', null, 'sys:menu:update,sys:menu:select', '2', null, '0');
 INSERT INTO `sys_menu` VALUES ('26', '4', '删除', null, 'sys:menu:delete', '2', null, '0');
-INSERT INTO `sys_menu` VALUES ('27', '1', '参数管理', 'modules/sys/config.html', 'sys:config:list,sys:config:info,sys:config:save,sys:config:update,sys:config:delete', '1', 'fa fa-sun-o', '6');
-INSERT INTO `sys_menu` VALUES ('29', '1', '系统日志', 'modules/sys/log.html', 'sys:log:list', '1', 'fa fa-file-text-o', '7');
-INSERT INTO `sys_menu` VALUES ('30', '1', '文件上传', 'modules/oss/oss.html', 'sys:oss:all', '1', 'fa fa-file-image-o', '6');
-INSERT INTO `sys_menu` VALUES ('31', '1', '部门管理', 'modules/sys/dept.html', null, '1', 'fa fa-file-code-o', '1');
+INSERT INTO `sys_menu` VALUES ('29', '1', '系统日志', 'modules/base/log.html', 'sys:log:list', '1', 'fa fa-file-text-o', '7');
+INSERT INTO `sys_menu` VALUES ('30', '1', '参数管理', 'modules/base/config.html', 'sys:config:list,sys:config:info,sys:config:save,sys:config:update,sys:config:delete', '1', 'fa fa-sun-o', '6');
+INSERT INTO `sys_menu` VALUES ('31', '1', '部门管理', 'modules/base/dept.html', null, '1', 'fa fa-file-code-o', '1');
 INSERT INTO `sys_menu` VALUES ('32', '31', '查看', null, 'sys:dept:list,sys:dept:info', '2', null, '0');
 INSERT INTO `sys_menu` VALUES ('33', '31', '新增', null, 'sys:dept:save,sys:dept:select', '2', null, '0');
 INSERT INTO `sys_menu` VALUES ('34', '31', '修改', null, 'sys:dept:update,sys:dept:select', '2', null, '0');
@@ -437,11 +483,13 @@ CREATE TABLE `sys_role` (
   `dept_id` bigint(20) DEFAULT NULL COMMENT '部门ID',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='角色';
 
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
+INSERT INTO `sys_role` VALUES ('1', 'test', 'test', '2', '2017-08-31 15:25:50');
+INSERT INTO `sys_role` VALUES ('2', '超级管理员', '超级管理员', '1', '2017-09-05 14:08:02');
 
 -- ----------------------------
 -- Table structure for sys_role_dept
@@ -452,11 +500,16 @@ CREATE TABLE `sys_role_dept` (
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
   `dept_id` bigint(20) DEFAULT NULL COMMENT '部门ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色与部门对应关系';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='角色与部门对应关系';
 
 -- ----------------------------
 -- Records of sys_role_dept
 -- ----------------------------
+INSERT INTO `sys_role_dept` VALUES ('1', '2', '1');
+INSERT INTO `sys_role_dept` VALUES ('2', '2', '6');
+INSERT INTO `sys_role_dept` VALUES ('3', '2', '3');
+INSERT INTO `sys_role_dept` VALUES ('4', '2', '4');
+INSERT INTO `sys_role_dept` VALUES ('5', '2', '5');
 
 -- ----------------------------
 -- Table structure for sys_role_menu
@@ -467,11 +520,50 @@ CREATE TABLE `sys_role_menu` (
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
   `menu_id` bigint(20) DEFAULT NULL COMMENT '菜单ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色与菜单对应关系';
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COMMENT='角色与菜单对应关系';
 
 -- ----------------------------
 -- Records of sys_role_menu
 -- ----------------------------
+INSERT INTO `sys_role_menu` VALUES ('1', '1', '1');
+INSERT INTO `sys_role_menu` VALUES ('2', '1', '2');
+INSERT INTO `sys_role_menu` VALUES ('3', '1', '15');
+INSERT INTO `sys_role_menu` VALUES ('4', '1', '16');
+INSERT INTO `sys_role_menu` VALUES ('5', '1', '17');
+INSERT INTO `sys_role_menu` VALUES ('6', '1', '18');
+INSERT INTO `sys_role_menu` VALUES ('7', '2', '1');
+INSERT INTO `sys_role_menu` VALUES ('8', '2', '2');
+INSERT INTO `sys_role_menu` VALUES ('9', '2', '15');
+INSERT INTO `sys_role_menu` VALUES ('10', '2', '16');
+INSERT INTO `sys_role_menu` VALUES ('11', '2', '17');
+INSERT INTO `sys_role_menu` VALUES ('12', '2', '18');
+INSERT INTO `sys_role_menu` VALUES ('13', '2', '31');
+INSERT INTO `sys_role_menu` VALUES ('14', '2', '32');
+INSERT INTO `sys_role_menu` VALUES ('15', '2', '33');
+INSERT INTO `sys_role_menu` VALUES ('16', '2', '34');
+INSERT INTO `sys_role_menu` VALUES ('17', '2', '35');
+INSERT INTO `sys_role_menu` VALUES ('18', '2', '3');
+INSERT INTO `sys_role_menu` VALUES ('19', '2', '19');
+INSERT INTO `sys_role_menu` VALUES ('20', '2', '20');
+INSERT INTO `sys_role_menu` VALUES ('21', '2', '21');
+INSERT INTO `sys_role_menu` VALUES ('22', '2', '22');
+INSERT INTO `sys_role_menu` VALUES ('23', '2', '4');
+INSERT INTO `sys_role_menu` VALUES ('24', '2', '23');
+INSERT INTO `sys_role_menu` VALUES ('25', '2', '24');
+INSERT INTO `sys_role_menu` VALUES ('26', '2', '25');
+INSERT INTO `sys_role_menu` VALUES ('27', '2', '26');
+INSERT INTO `sys_role_menu` VALUES ('28', '2', '5');
+INSERT INTO `sys_role_menu` VALUES ('29', '2', '6');
+INSERT INTO `sys_role_menu` VALUES ('30', '2', '7');
+INSERT INTO `sys_role_menu` VALUES ('31', '2', '8');
+INSERT INTO `sys_role_menu` VALUES ('32', '2', '9');
+INSERT INTO `sys_role_menu` VALUES ('33', '2', '10');
+INSERT INTO `sys_role_menu` VALUES ('34', '2', '11');
+INSERT INTO `sys_role_menu` VALUES ('35', '2', '12');
+INSERT INTO `sys_role_menu` VALUES ('36', '2', '13');
+INSERT INTO `sys_role_menu` VALUES ('37', '2', '14');
+INSERT INTO `sys_role_menu` VALUES ('38', '2', '30');
+INSERT INTO `sys_role_menu` VALUES ('39', '2', '29');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -489,12 +581,16 @@ CREATE TABLE `sys_user` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='系统用户';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='系统用户';
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', 'admin', '9ec9750e709431dad22365cabc5c625482e574c74adaebba7dd02f1129e4ce1d', 'YzcmCZNvbXocrsz9dm8e', 'root@renren.io', '13612345678', '1', null, '2016-11-11 11:11:11');
+INSERT INTO `sys_user` VALUES ('1', 'admin', '9ec9750e709431dad22365cabc5c625482e574c74adaebba7dd02f1129e4ce1d', 'YzcmCZNvbXocrsz9dm8e', 'wangwincent@163.com', '13812345678', '1', '3', '2017-09-04 17:09:11');
+INSERT INTO `sys_user` VALUES ('2', 'test', 'a3122a95c3672f95355d75e24d960eee545dc9a5d49dbb45b2779578b57e36f7', 'u5jXtWe3D3PB7dFfoC1R', 'test@test.com', '13112345678', '1', '3', '2017-09-04 17:05:56');
+INSERT INTO `sys_user` VALUES ('3', 'xiaoshou', '4c52c807fe62085f896a56eda67bb8443e2bb46962b38868f5d063f10e3e4818', 'M9ISPPnbbt4pOlGomz7d', 'xiaoshou@test.com', '13112345678', '1', '5', '2017-09-05 10:33:53');
+INSERT INTO `sys_user` VALUES ('4', 'zhangsana', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'd4ME46CbGjyH2sG5BcQq', 'zhangsan@test.com', '13122556677', '1', '4', '2017-09-05 10:34:52');
+INSERT INTO `sys_user` VALUES ('5', 'hello123', '27cc6994fc1c01ce6659c6bddca9b69c4c6a9418065e612c69d110b3f7b11f8a', 'VUhB2IpCAklZTPxJah6I', 'hello@test.com', '13312345678', '1', '3', '2017-09-05 10:40:38');
 
 -- ----------------------------
 -- Table structure for sys_user_role
@@ -505,11 +601,17 @@ CREATE TABLE `sys_user_role` (
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户ID',
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
 
 -- ----------------------------
 -- Records of sys_user_role
 -- ----------------------------
+INSERT INTO `sys_user_role` VALUES ('2', '2', '1');
+INSERT INTO `sys_user_role` VALUES ('3', '3', '1');
+INSERT INTO `sys_user_role` VALUES ('6', '5', '1');
+INSERT INTO `sys_user_role` VALUES ('7', '4', '1');
+INSERT INTO `sys_user_role` VALUES ('9', '1', '1');
+INSERT INTO `sys_user_role` VALUES ('10', '1', '2');
 
 -- ----------------------------
 -- Table structure for sys_user_token

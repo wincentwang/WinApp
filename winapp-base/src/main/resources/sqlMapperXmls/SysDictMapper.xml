@@ -36,7 +36,7 @@
 			m.order_num ASC
 	</select>
 	
-	<select id="listNotMacro" resultType="wang.wincent.winapp.base.entity.SysDictEntity">
+	<select id="listNotDict" resultType="wang.wincent.winapp.base.entity.SysDictEntity">
 		SELECT
 			dict_id,
 			parent_id,

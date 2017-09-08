@@ -20,12 +20,12 @@ public class SysDictEntity implements Serializable {
 	/**
 	 * 字典id
 	 */
-	private Long macroId;
+	private Long dictId;
 	
 	/**
 	 * 类型id
 	 */
-	private Long typeId;
+	private Long parentId;
 	
 	/**
 	 * 类型名称
@@ -79,24 +79,26 @@ public class SysDictEntity implements Serializable {
 	
 	private List<?> list;
 
+
+	public Long getDictId() {
+		return dictId;
+	}
+
+	public void setDictId(Long dictId) {
+		this.dictId = dictId;
+	}
+
+	public Long getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
+	}
+
 	public SysDictEntity() {
 		super();
-	}
 
-	public Long getMacroId() {
-		return macroId;
-	}
-
-	public void setMacroId(Long macroId) {
-		this.macroId = macroId;
-	}
-
-	public Long getTypeId() {
-		return typeId;
-	}
-
-	public void setTypeId(Long typeId) {
-		this.typeId = typeId;
 	}
 
 	public String getTypeName() {

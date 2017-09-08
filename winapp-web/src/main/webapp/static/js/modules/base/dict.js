@@ -9,18 +9,18 @@ $(function () {
 
 function initialPage() {
 	$(window).resize(function() {
-		TreeGrid.table.resetHeight({height: $(window).height()-100});
+	//	TreeGrid.table.resetHeight({height: $(window).height()-100});
 	});
 }
 
 function getGrid() {
 	var colunms = TreeGrid.initColumn();
-    var table = new TreeTable(TreeGrid.id, '../../sys/dict/list?_' + $.now(), colunms);
+    var table = new TreeTable(TreeGrid.id, '/sys/dict/list?_' + $.now(), colunms);
     table.setExpandColumn(2);
-    table.setIdField("macroId");
-    table.setCodeField("macroId");
-    table.setParentCodeField("typeId");
-    table.setExpandAll(false);
+    table.setIdField("dictId");
+    table.setCodeField("dictId");
+    table.setParentCodeField("parentId");
+    table.setExpandAll(true);
     table.setHeight($(window).height()-100);
     table.init();
     TreeGrid.table = table;
@@ -70,7 +70,7 @@ var vm = new Vue({
 					ids[idx] = item.id;
 				});
 				$.RemoveForm({
-					url: '../../sys/macro/remove?_' + $.now(),
+					url: '/sys/macro/remove?_' + $.now(),
 			    	param: ids,
 			    	success: function(data) {
 			    		vm.load();

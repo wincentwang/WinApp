@@ -126,7 +126,6 @@ var vm = new Vue({
     }
 });
 
-
 var Menu = {
     id: "menuTable",
     table: null,
@@ -175,13 +174,18 @@ function getMenuId () {
 
 
 $(function () {
+    initMenuTree();
+});
+
+function initMenuTree(){
     var colunms = Menu.initColumn();
     var table = new TreeTable(Menu.id, baseURL + "sys/menu/list", colunms);
     table.setExpandColumn(2);
     table.setIdField("menuId");
     table.setCodeField("menuId");
     table.setParentCodeField("parentId");
-    table.setExpandAll(false);
+    table.setExpandAll(true);
+    table.setHeight($(window).height()-100);
     table.init();
     Menu.table = table;
-});
+}

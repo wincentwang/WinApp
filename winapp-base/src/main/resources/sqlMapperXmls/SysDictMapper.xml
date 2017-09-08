@@ -9,20 +9,20 @@
 		FROM
 			sys_dict
 		WHERE
-			type_id = #{value}
+			parent_id = #{value}
 	</select>
 	
 	<select id="list" resultType="wang.wincent.winapp.base.entity.SysDictEntity">
 		SELECT
-			m.macro_id,
-			m.type_id,
+			m.dict_id,
+			m.parent_id,
 			(
 				SELECT
 					p.name
 				FROM
 					sys_dict p
 				WHERE
-					p.macro_id = m.type_id
+					p.dict_id = m.parent_id
 			) AS typeName,
 			m.name,
 			m.value,
@@ -38,8 +38,8 @@
 	
 	<select id="listNotMacro" resultType="wang.wincent.winapp.base.entity.SysDictEntity">
 		SELECT
-			macro_id,
-			type_id,
+			dict_id,
+			parent_id,
 			name,
 			value
 		FROM
@@ -52,7 +52,7 @@
 	
 	<insert id="save">
 		INSERT INTO sys_dict (
-			type_id,
+			parent_id,
 			name,
 			value,
 			status,
@@ -75,7 +75,7 @@
 	
 	<select id="getObjectById" resultType="wang.wincent.winapp.base.entity.SysDictEntity">
 		SELECT
-			m.macro_id,
+			m.dict_id,
 			m.type_id,
 			(
 				SELECT
@@ -88,7 +88,7 @@
 			m.name,
 			m.value,
 			m.status,
-			m.type,
+			m.parent_id,
 			m.remark,
 			m.order_num
 		FROM
@@ -100,7 +100,7 @@
 	<update id="update">
 		UPDATE sys_dict
 	 	<set> 
-			<if test="typeId != null">type_id = #{typeId}, </if>
+			<if test="typeId != null">parent_id = #{typeId}, </if>
 			<if test="name != null">name = #{name}, </if>
 			<if test="value != null">value = #{value}, </if>
 			<if test="status != null">status = #{status}, </if>
@@ -110,7 +110,7 @@
 			gmt_modified = NOW()
 		</set>
 		WHERE
-			macro_id = #{macroId}
+			dict_id = #{dictId}
 	</update>
 	
 	<delete id="batchRemove">
@@ -118,7 +118,7 @@
 		FROM
 			sys_dict
 		WHERE
-			macro_id IN
+		dict_id IN
 		<foreach item="id" collection="array" open="(" separator="," close=")">
 			#{id}
 		</foreach>
